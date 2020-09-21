@@ -21,3 +21,21 @@ Chip8::Chip8() {
   delayTimer = 0;
   soundTimer = 0;
 }
+
+bool Chip8::loadRom(const char* fileName) {
+	std::ifstream selectedRom(fileName, std::ios::binary);
+	if(selectedRom.is_open()) {
+		selectedRom.seekg(0, std::ios::end);
+		std::streampos size = selectedRom.tellg();
+		char* buffer = new char[size];
+
+		selectedRom.seekg (0, std::ios::end);
+		selectedRom.read(buffer, size);
+
+		for(int i = 0; i < size; i++) {
+			memory[START_ADDRESS + i] = buffer[i];
+		}
+		return true;
+	}
+	return false;
+}

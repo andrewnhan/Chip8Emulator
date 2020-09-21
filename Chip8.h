@@ -1,5 +1,7 @@
 #include <cstdint>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 const int START_ADDRESS = 0x200;
 
@@ -34,4 +36,5 @@ private:
 
 public:
   Chip8();
+  bool loadRom(const char* fileNames);
 };
