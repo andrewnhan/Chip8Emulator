@@ -4,4 +4,4 @@
 
 Chip8 chip8;
 
-int main(int argc, char **argv) { std::cout << "Chip8" << chip8; }
+int main(int argc, char **argv) { std::cout << "Chip8" << &chip8; }

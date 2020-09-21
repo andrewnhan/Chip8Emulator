@@ -1,15 +1,15 @@
 #include <cstdint>
 #include <vector>
 
-constexpr START_ADDRESS = 0x200;
+const int START_ADDRESS = 0x200;
 
 class Chip8 {
 private:
   class Register {
   public:
-    Register(uint8_t val) : value(val){};
+    Register(uint8_t val = 0) : value(val){};
     uint8_t value;
-  }
+  };
 
   // General purpose register, 16
   std::vector<Register>
