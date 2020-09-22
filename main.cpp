@@ -15,5 +15,9 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
+	for(int i = 0; i < 123; i++) {
+		chip8.cycle();
+	}
+
 	return 0;
  }

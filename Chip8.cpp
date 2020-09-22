@@ -29,13 +29,27 @@ bool Chip8::loadRom(const char* fileName) {
 		std::streampos size = selectedRom.tellg();
 		char* buffer = new char[size];
 
-		selectedRom.seekg (0, std::ios::end);
+		selectedRom.seekg (0, std::ios::beg);
 		selectedRom.read(buffer, size);
 
 		for(int i = 0; i < size; i++) {
-			memory[START_ADDRESS + i] = buffer[i];
+			memory.at(START_ADDRESS+i) = buffer[i];
+			// std::cout << START_ADDRESS+i << std::endl;
 		}
 		return true;
 	}
 	return false;
+}
+
+void Chip8::cycle() {
+	uint16_t upper = memory.at(programCounter);
+	uint16_t lower = memory.at(programCounter+1);
+
+	uint16_t instruction = (upper << 8u) | lower;
+
+	programCounter += 2;
+
+	std::cout << std::hex << static_cast<int>(instruction) << std::endl;
+
+
 }

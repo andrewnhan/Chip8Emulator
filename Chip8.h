@@ -37,4 +37,5 @@ private:
 public:
   Chip8();
   bool loadRom(const char* fileNames);
+  void cycle();
 };
